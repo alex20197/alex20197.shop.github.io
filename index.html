@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Shop</title>
+	</head>
+	<body>
+		<script>
+			let product1 = "Бумага офисная А4Б 80г/м2, 500л"
+			let product2 = "Биндеры для бумаги 51мм"
+			let product3 = "Ручка шариковая синяя"
+
+			let productPrice1 = 280.25
+			let productPrice2 = 56
+			let productPrice3 = 12.5
+
+			let productQuanntity1 = +prompt(
+				`Укажите количество продуктов ${product1}, цена ${productPrice1}`
+			)
+			let productQuanntity2 = +prompt(
+				`Укажите количество продуктов ${product2}, цена '${productPrice2}`
+			)
+			let productQuanntity3 = +prompt(
+				`Укажите количество продуктов ${product3}, цена '${productPrice3}`
+			)
+
+			let totalPrice = 0
+			totalPrice += productPrice1 * productQuanntity1
+			totalPrice += productPrice2 * productQuanntity2
+			totalPrice += productPrice3 * productQuanntity3
+
+			let shippingMesadge
+			if (totalPrice > 1000) {
+				shippingMessage = "Доставка за наш счет"
+			} else {
+				shippingMesadge =
+					"Бесплатная доставка при заказе от 1000. Стоимость доставки 15"
+			}
+			alert(`Сумма Вашего заказа ${totalPrice}. ${shippingMessage}.`)
+		</script>
+	</body>
+</html>
