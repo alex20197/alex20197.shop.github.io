@@ -8,36 +8,44 @@
 	</head>
 	<body>
 		<script>
-			let product1 = "Бумага офисная А4Б 80г/м2, 500л"
-			let product2 = "Биндеры для бумаги 51мм"
-			let product3 = "Ручка шариковая синяя"
+			let names = []
+			names[0] = "Бумага офисная А4Б 80г/м2, 500л"
+			names[1] = "Биндеры для бумаги 51мм"
+			names[2] = "Ручка шариковая синяя"
 
-			let productPrice1 = 280.25
-			let productPrice2 = 56
-			let productPrice3 = 12.5
+			let prices = []
+			prices[0] = 280.25
+			prices[1] = 56
+			prices[2] = 12.5
 
-			let productQuanntity1 = +prompt(
-				`Укажите количество продуктов ${product1}, цена ${productPrice1}`
-			)
-			let productQuanntity2 = +prompt(
-				`Укажите количество продуктов ${product2}, цена '${productPrice2}`
-			)
-			let productQuanntity3 = +prompt(
-				`Укажите количество продуктов ${product3}, цена '${productPrice3}`
-			)
+			//массив с количеством покупаемых продуктов
+			let products = []
+
+			//цикл для получения количества покупаемых продуктов
+			for (let index = 0; index < names.length; index++) {
+				const name = names[index]
+				const price = prices[index]
+
+				products[index] = +prompt(
+					`Укажите количество продуктов ${name}, цена - ${price}`,
+					0
+				)
+			}
 
 			let totalPrice = 0
-			totalPrice += productPrice1 * productQuanntity1
-			totalPrice += productPrice2 * productQuanntity2
-			totalPrice += productPrice3 * productQuanntity3
+			//цикл для рассчета общей цены покупаемых продуктов
+			for (let index = 0; index < products.length; index++) {
+				totalPrice += prices[index] * products[index]
+			}
 
-			let shippingMesadge
+			let shippingMessage
 			if (totalPrice > 1000) {
 				shippingMessage = "Доставка за наш счет"
 			} else {
-				shippingMesadge =
+				shippingMessage =
 					"Бесплатная доставка при заказе от 1000. Стоимость доставки 15"
 			}
+
 			alert(`Сумма Вашего заказа ${totalPrice}. ${shippingMessage}.`)
 		</script>
 	</body>
