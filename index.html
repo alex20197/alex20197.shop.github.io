@@ -8,36 +8,41 @@
 	</head>
 	<body>
 		<script>
-			let names = []
-			names[0] = "Бумага офисная А4Б 80г/м2, 500л"
-			names[1] = "Биндеры для бумаги 51мм"
-			names[2] = "Ручка шариковая синяя"
+			//фабричная функция для заполнения товаров
+			function createdProduct(name, price) {
+				return {
+					name,
+					price,
+					ordered: 0,
+					calculateTotal() {
+						return this.price * this.ordered
+					},
+				}
+			}
 
-			let prices = []
-			prices[0] = 280.25
-			prices[1] = 56
-			prices[2] = 12.5
-
-			//массив с количеством покупаемых продуктов
-			let products = []
+			//массив с товарами
+			let products = [
+				createdProduct("Бумага офисная А4Б 80г/м2, 500л", 280.25),
+				createdProduct("Биндеры для бумаги 51мм", 56),
+				createdProduct("Ручка шариковая синяя", 12.5),
+			]
 
 			//цикл для получения количества покупаемых продуктов
-			for (let index = 0; index < names.length; index++) {
-				const name = names[index]
-				const price = prices[index]
+			for (let index = 0; index < products.length; index++) {
+				const name = products[index].name
+				const price = products[index].price
 
-				products[index] = +prompt(
-					`Укажите количество продуктов ${name}, цена - ${price}`,
-					0
+				products[index].ordered = +prompt(
+					`Укажите количество продуктов ${name}, цена ${price}.`
 				)
 			}
-
+			//цикл для рассчета общей суммы заказа
 			let totalPrice = 0
-			//цикл для рассчета общей цены покупаемых продуктов
 			for (let index = 0; index < products.length; index++) {
-				totalPrice += prices[index] * products[index]
+				totalPrice += products[index].calculateTotal()
 			}
 
+			//стоимость доставки
 			let shippingMessage
 			if (totalPrice > 1000) {
 				shippingMessage = "Доставка за наш счет"
